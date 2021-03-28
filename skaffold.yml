@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2alpha1
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: rare-terminal-309004
+  artifacts:
+    - image: us.gcr.io/rare-terminal-309004/auth-service
+      context: auth-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
