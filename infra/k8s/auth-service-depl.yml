@@ -15,6 +15,15 @@ spec:
       containers:
         - name: auth-service
           image: us.gcr.io/rare-terminal-309004/auth-service
+          volumeMounts:
+            - name: rsa-key
+              readOnly: true
+              mountPath: "/secret/"
+      volumes:
+        - name: rsa-key
+          secret:
+            secretName: rsa-jwt
+            defaultMode: 0600
 ---
 apiVersion: v1
 kind: Service
