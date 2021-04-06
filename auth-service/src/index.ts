@@ -21,4 +21,4 @@ initializeDb();
 
 app.listen(3000, () => console.log(`Auth-Service listening on port: 3000`));
 
-// kubectl create secret generic rsaJWT --from-file=private.key --from-file=public.key
+// kubectl create secret generic rsa-jwt --from-file=private.key --from-file=public.key
